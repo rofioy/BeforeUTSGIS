@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map Desa Karanglewas Kidul</title>
+    <!-- Tailwind & DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet Map -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+    />
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Custom Styles -->
+    <style>
+      .map-container {
+        height: 600px;
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="fixed top-0 z-50 shadow-md navbar bg-base-100">
+      <nav class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <i data-feather="menu"></i>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#peta">Peta</a></li>
+            <li><a href="#informasi">Informasi</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+          </ul>
+        </div>
+        <a href="#home" class="text-xl btn btn-ghost">Karanglewas Kidul</a>
+      </nav>
+      <div class="hidden navbar-center lg:flex">
+        <ul class="px-1 menu menu-horizontal">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#peta">Peta</a></li>
+          <li><a href="#informasi">Informasi</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <label class="swap swap-rotate">
+          <input type="checkbox" class="theme-controller" value="cyberpunk" />
+          <i data-feather="sun" class="swap-on"></i>
+          <i data-feather="moon" class="swap-off"></i>
+        </label>
+      </div>
+    </header>
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="min-h-screen hero"
+        style="
+          background-image: url(https://images.unsplash.com/photo-1603714196939-6f6436c8d0c5?w=1200&auto=format&fit=crop&q=80);
+        "
+      >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="text-center hero-content text-neutral-content">
+          <div class="max-w-md">
+            <h1
+              class="mb-5 text-5xl font-bold animate__delay-1.5s animate__animated animate__bounceInLeft"
+            >
+              Desa Karanglewas Kidul
+            </h1>
+            <p
+              class="mb-5 desc-hero animate__delay-2s animate__animated animate__bounceInLeft"
+            >
+              Sistem Informasi Geografis untuk pemetaan wilayah di Desa
+              Karanglewas Kidul
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map Section -->
+      <section id="peta" class="py-16 md:px-10 bg-base-200">
+        <div class="container px-4 mx-auto">
+          <div class="mb-10 text-center">
+            <h2 class="mb-4 text-3xl font-bold">Peta Interaktif</h2>
+            <p class="text-gray-600">
+              Jelajahi wilayah Desa Karanglewas Kidul melalui peta interaktif
+            </p>
+          </div>
+          <div class="map-container">
+            <iframe
+              src="map.html"
+              frameborder="0"
+              style="width: 100%; height: 100%; border-radius: 1rem"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- Information Section -->
+      <section id="informasi" class="py-16">
+        <div class="container px-4 mx-auto">
+          <h2 class="mb-10 text-3xl font-bold text-center">Informasi Peta</h2>
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <!-- Home -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i
+                  data-feather="home"
+                  class="w-12 h-12 mb-4 text-slate-950"
+                ></i>
+                <h3 class="card-title">Rumah</h3>
+                <p>Menunjukan lokasi setiap rumah yang ada.</p>
+              </div>
+            </div>
+            <!-- UMKM -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i
+                  data-feather="shopping-cart"
+                  class="w-12 h-12 mb-4 text-slate-950 dark:text-slate-100"
+                ></i>
+                <h3 class="card-title">UMKM</h3>
+                <p>Informasi tentang Bisnis UMKM tedekat.</p>
+              </div>
+            </div>
+            <!-- Sawah -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i data-feather="" class="w-12 h-12 mb-4">
+                  <?xml version="1.0" encoding="utf-8"?>
+
+                  <svg
+                    fill="#33A02C"
+                    class="size-10"
+                    viewBox="0 0 1920 1920"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+
+                    <g id="SVGRepo_iconCarrier">
+                      <path d="M0 1750.176h1920V169H0z" fill-rule="evenodd" />
+                    </g>
+                  </svg>
+                </i>
+                <h3 class="card-title">Sawah</h3>
+                <p>Menunjukan bagian sawah di Desa Karanglewas Kidul.</p>
+              </div>
+            </div>
+            <!-- Sungai -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i data-feather="" class="w-12 h-12 mb-4 text-primary">
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <svg
+                    viewBox="0 0 1024 1024"
+                    fill="#3572EF"
+                    class="text-blue-500 icon size-10"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M373.105208 1000.026908a27.555278 27.555278 0 0 1-19.426471-7.99103l-9.782124-9.644347a27.569055 27.569055 0 0 1 38.852942-39.128495l9.782123 9.644347a27.555278 27.555278 0 0 1-19.42647 47.119525z m-78.256989-77.568106a27.555278 27.555278 0 0 1-19.426471-7.991031l-19.702024-19.426471a27.569055 27.569055 0 0 1 38.990718-38.990718l19.426471 19.288695a27.555278 27.555278 0 0 1-19.288694 47.119525z m-68.888194-144.114103h-0.826659a27.555278 27.555278 0 0 1-26.590843-28.381936q0-7.991031 1.102211-15.982061a27.734387 27.734387 0 0 1 55.110556 6.199937c0 3.857739-0.688882 7.715478-0.826659 11.573217a27.555278 27.555278 0 0 1-27.693054 26.590843z m37.75073-101.541198a27.555278 27.555278 0 0 1-21.35534-44.915103 201.566857 201.566857 0 0 1 22.044222-23.008657 27.624166 27.624166 0 0 1 36.648519 41.332917 144.114103 144.114103 0 0 0-15.982061 16.670943 27.555278 27.555278 0 0 1-21.079787 9.9199z m79.772529-139.291929h-1.791093a27.555278 27.555278 0 0 1-25.764185-29.208595V496.729761a27.555278 27.555278 0 0 1 55.110556-0.826659V511.885163a27.555278 27.555278 0 0 1-27.279725 25.626409z m-27.555278-104.710056a27.555278 27.555278 0 0 1-23.008657-12.262098 143.700773 143.700773 0 0 0-13.777638-18.186484 27.555278 27.555278 0 1 1 40.368481-37.475177 199.224658 199.224658 0 0 1 19.8398 25.075302 27.555278 27.555278 0 0 1-23.421986 42.848457z m-87.488006-136.674177a27.555278 27.555278 0 0 1-27.555278-23.008657q-1.239987-7.853254-1.92887-15.844285a27.651721 27.651721 0 1 1 55.110556-4.546621c0 3.857739 0.826658 7.715478 1.377764 11.435441a27.555278 27.555278 0 0 1-22.733104 31.688569z m17.222048-106.914478a27.555278 27.555278 0 0 1-24.386421-40.368482 195.091366 195.091366 0 0 1 17.222049-27.555277 27.582833 27.582833 0 1 1 43.950668 33.341886 140.118587 140.118587 0 0 0-12.399875 19.42647 27.555278 27.555278 0 0 1-24.386421 15.29318z m116.145496-116.283272a27.555278 27.555278 0 0 1-18.048707-48.359512l10.333229-9.093242a27.555278 27.555278 0 0 1 36.23519 41.332917l-10.333229 9.093241a27.555278 27.555278 0 0 1-18.186483 7.302149zM748.683643 1019.315603a27.555278 27.555278 0 0 1-27.555278-27.555278 27.555278 27.555278 0 0 1 46.981749-19.702024 27.555278 27.555278 0 0 1-19.426471 47.257302z m-68.888194-67.92376a27.555278 27.555278 0 0 1-19.426471-7.99103l-47.670631-47.257302c-4.133292-4.133292-8.266583-8.679912-12.124322-13.777639a27.555278 27.555278 0 0 1 3.306634-38.852941 28.519712 28.519712 0 0 1 38.852941 3.306633c2.755528 3.306633 5.786608 6.613267 8.817689 9.644347l47.670631 47.257302a27.555278 27.555278 0 0 1-19.426471 47.67063z m-97.68346-159.545058a27.555278 27.555278 0 0 1-1.239987-55.110555 27.582833 27.582833 0 0 1 2.617751 55.110555h-1.377764z m22.181999-92.447957a26.453067 26.453067 0 0 1-13.777639-3.719962 27.555278 27.555278 0 0 1-10.195453-37.475178 192.886944 192.886944 0 0 1 42.435128-51.528369 149.762934 149.762934 0 0 0 14.87985-14.742074 28.24416 28.24416 0 0 1 38.852941-2.755528 27.555278 27.555278 0 0 1 2.755528 38.852942 203.495726 203.495726 0 0 1-20.528682 20.390906 143.149668 143.149668 0 0 0-30.586358 37.061848 27.555278 27.555278 0 0 1-23.835315 13.915415z m95.203484-162.162809h-1.653316a27.555278 27.555278 0 0 1-19.013142-9.231018 27.555278 27.555278 0 0 1-6.751043-19.977577 27.555278 27.555278 0 1 1 27.417501 29.208595z m-20.666458-92.861286a27.555278 27.555278 0 0 1-24.248644-13.777639 137.776389 137.776389 0 0 0-24.79975-32.515228l-16.395391-16.119837-8.542136-8.955465a27.555278 27.555278 0 0 1 2.066646-38.852942 28.381936 28.381936 0 0 1 38.990718 2.066646l6.062161 6.337714 16.395391 16.119837a192.886944 192.886944 0 0 1 34.444097 45.328432 27.555278 27.555278 0 0 1-10.746559 37.475178 27.555278 27.555278 0 0 1-13.226533 2.893304z m-96.443472-162.025033a27.555278 27.555278 0 0 1-27.555278-24.661974 27.555278 27.555278 0 0 1 6.475491-19.977576 27.555278 27.555278 0 0 1 18.737588-9.644347 27.651721 27.651721 0 1 1 4.546621 55.110555h-2.204422z m19.013142-93.274615a27.555278 27.555278 0 0 1-12.950981-3.168857 27.555278 27.555278 0 0 1-11.43544-37.199625 196.055801 196.055801 0 0 1 44.915103-56.626096l15.155402-13.777639a28.24416 28.24416 0 0 1 38.852942 2.755528 27.555278 27.555278 0 0 1-2.617752 38.852942l-15.155402 13.777639a140.118587 140.118587 0 0 0-32.377452 41.332916 27.555278 27.555278 0 0 1-24.248644 14.053192z m136.94973-134.194203a27.555278 27.555278 0 0 1-20.804235-9.506571 27.555278 27.555278 0 0 1-6.751043-19.977576 27.555278 27.555278 0 0 1 9.506571-18.875365 28.24416 28.24416 0 0 1 38.852942 2.617751 27.555278 27.555278 0 0 1-20.666459 45.741761zM808.478596 847.232893a128.407594 128.407594 0 0 1 6.613266-188.340323 210.935651 210.935651 0 0 0 10.195453-310.410204l-16.39539-16.119837a128.407594 128.407594 0 0 1 5.648832-188.340323L978.770212 1.148091h-125.927619l-92.585733 80.599187a211.073427 211.073427 0 0 0-9.231018 309.721322l16.39539 16.119837a128.269818 128.269818 0 0 1-6.199938 188.753653 210.935651 210.935651 0 0 0-10.884334 309.721321l118.901023 117.936589h116.972154zM120.423311 751.61608a127.02983 127.02983 0 0 1 44.501773-92.72351 210.935651 210.935651 0 0 0 10.195453-310.134651l-16.39539-16.119837a128.407594 128.407594 0 0 1 5.648832-188.340324L328.603434 1.423643h-125.927619L110.090082 82.022831a211.073427 211.073427 0 0 0-8.955466 309.307992l16.395391 16.119838a128.269818 128.269818 0 0 1-6.199938 188.753652 210.935651 210.935651 0 0 0-10.884335 309.721322l118.625471 117.936589h116.283272L157.485159 847.508446a127.02983 127.02983 0 0 1-37.061848-95.892366z"
+                    />
+                  </svg>
+                </i>
+                <h3 class="card-title">Sungai</h3>
+                <p>
+                  Menunjukan aliran sungai yang melewati desa Karanglewas Kidul.
+                </p>
+              </div>
+            </div>
+            <!-- Lapangan -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i data-feather="" class="w-12 h-12 mb-4 text-primary">
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <svg
+                    fill="#93D53C"
+                    class="size-10"
+                    viewBox="0 0 1920 1920"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+
+                    <g id="SVGRepo_iconCarrier">
+                      <path d="M0 1750.176h1920V169H0z" fill-rule="evenodd" />
+                    </g>
+                  </svg>
+                </i>
+                <h3 class="card-title">Lapangan</h3>
+                <p>Menunjukan Lapangan di Desa Karanglewas Kidul.</p>
+              </div>
+            </div>
+            <!-- Tempat Ibadah -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i data-feather="" class="w-12 h-12 mb-4 text-primary">
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <svg
+                    fill="#000000"
+                    class="size-10"
+                    viewBox="0 0 50 50"
+                    version="1.2"
+                    baseProfile="tiny"
+                    xmlns="http://www.w3.org/2000/svg"
+                    overflow="inherit"
+                  >
+                    <path
+                      d="M48.022 26.652c-1.396 6.519-6.192 11.874-12.516 13.976-1.94.646-3.95.973-5.975.973-8.149 0-15.354-5.19-17.93-12.914-1.595-4.781-1.229-9.896 1.03-14.404 2.259-4.507 6.141-7.867 10.93-9.46 4.505-1.496 9.397-1.246 13.71.689l.935-1.763c-6.263-3.869-14.064-4.795-21.078-2.462-6.343 2.109-11.484 6.559-14.476 12.528-2.992 5.97-3.476 12.746-1.364 19.08 3.412 10.231 12.955 17.105 23.747 17.105 2.682 0 5.343-.433 7.911-1.286 9.573-3.184 16.266-11.73 17.052-21.774l-1.976-.288zm-12.325-12.049l-5.014-9.384-2.55 10.477-10.429 2.05 9.547 5.421-1.642 10.796 8.107-7.374 10.046 4.82-5.131-10.027 8.124-7.842z"
+                    />
+                  </svg>
+                </i>
+                <h3 class="card-title">Tempat Ibadah</h3>
+                <p>
+                  Menunjukan tempat peribadahan yang ada di Desa Karanglewas
+                  Kidul.
+                </p>
+              </div>
+            </div>
+            <!-- Pendidikan -->
+            <div class="shadow-xl card bg-base-100">
+              <div class="card-body">
+                <i
+                  data-feather="map-pin"
+                  class="w-12 h-12 mb-4 text-slate-950 dark:text-slate-100"
+                ></i>
+                <h3 class="card-title">Pendidikan</h3>
+                <p>
+                  Menunjukan tempat sekolah dan bimbel di Desa Karanglewas
+                  Kidul.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tentang Section -->
+      <section id="tentang" class="py-16 bg-base-200">
+        <div class="container px-4 mx-auto">
+          <h2 class="mb-6 text-3xl font-bold text-center">
+            Tentang Peta Desa Karanglewas Kidul
+          </h2>
+          <p class="mb-10 text-xl text-center">
+            Peta ini menunjukkan pembagian wilayah desa Karanglewas Kidul dalam
+            berbagai kategori zona, yang ditandai dengan warna berbeda.
+            Masing-masing area dilabeli dengan kode RT (Rukun Tetangga) dan RW
+            (Rukun Warga) yang sesuai, sehingga memudahkan untuk
+            mengidentifikasi batas administratif setiap area dalam desa. Selain
+            itu, ada berbagai elemen peta yang mendukung pengguna dalam
+            mengeksplorasi peta
+          </p>
+          <!-- Container -->
+          <div class="max-w-2xl mx-auto shadow-xl card bg-base-200">
+            <!-- Item 1 -->
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" checked="checked" />
+              <div class="text-xl font-medium collapse-title">
+                Navigasi Zoom In dan Zoom Out
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Tersedia tombol navigasi (+ dan -) di bagian kiri layar untuk
+                  memperbesar atau memperkecil peta, sehingga pengguna dapat
+                  melihat detail secara lebih jelas atau melihat peta secara
+                  keseluruhan.
+                </p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" />
+              <div class="text-xl font-medium collapse-title">
+                Ikon Layer dan Pencarian
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Di bagian kiri layar, terdapat opsi untuk memilih layer yang
+                  berbeda serta fitur pencarian, yang kemungkinan digunakan
+                  untuk menampilkan informasi tertentu, seperti fasilitas
+                  publik, batas wilayah, atau informasi khusus mengenai lokasi
+                  tertentu dalam desa.
+                </p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" />
+              <div class="text-xl font-medium collapse-title">
+                Identifikasi Fasilitas Umum
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Beberapa fasilitas umum seperti musala (tempat ibadah umat
+                  Islam) juga ditandai di peta. Hal ini berguna untuk penduduk
+                  dan pengunjung yang ingin mengetahui letak fasilitas publik
+                  yang penting.
+                </p>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" />
+              <div class="text-xl font-medium collapse-title">
+                Warna yang Berbeda untuk Setiap Zona
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Setiap RT dan RW memiliki warna berbeda, yang kemungkinan
+                  digunakan untuk mempermudah identifikasi. Warna-warna ini
+                  membantu visualisasi dalam membedakan satu area dari yang
+                  lainnya dengan cepat.
+                </p>
+              </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="collapse collapse-plus bg-base-200">
+              <input type="radio" name="my-accordion-3" />
+              <div class="text-xl font-medium collapse-title">
+                Pembatas Wilayah
+              </div>
+              <div class="collapse-content">
+                <p>
+                  Project peta digital ini kemungkinan dibuat dengan tujuan
+                  sebagai alat bantu dalam perencanaan desa, tata ruang, dan
+                  pelayanan masyarakat. Dengan adanya peta digital yang
+                  interaktif, pemerintah desa maupun masyarakat dapat mengakses
+                  informasi terkait wilayah mereka dengan lebih mudah dan cepat.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="p-4 footer footer-center bg-base-300 text-base-content retro:text-slate-50"
+    >
+      <aside>
+        <p>
+          Copyright © Peta Desa Karanglewas Kidul, Created by Rofi Syarif
+          Hidayat
+        </p>
+      </aside>
+    </footer>
+    <!-- Feather Icon -->
+    <script>
+      feather.replace();
+    </script>
+    <!-- Script.Js -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
